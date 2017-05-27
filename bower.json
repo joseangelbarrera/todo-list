@@ -1,0 +1,22 @@
+{
+  "name": "todo_mongoose",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "José Ángel <barrera@estudiodepublicidad.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/joseangelbarrera/mongoose",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "toastr": "^2.1.3"
+  }
+}

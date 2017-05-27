@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+          h1 List Task
+          form(action='/tasks', method='POST')
+            .input-group
+              input.form-control.add-todo(name="task", type='text', placeholder='Add task', autofocus)
+              span.input-group-btn
+                button#checkAll.btn.btn-primary Add Task
+          hr
+          ul#sortable.list-unstyled.list-group.list-tasks
+            each toDo in toDos
+              li.list-group-item
+                .content
+                  p #{toDo.task}
+                  form.edit-form(action=`/task/${toDo.task}`)
+                   input.input-lg.hidden(name='edited-value', value=toDo.task)
+                .edition
+                   a.btn.btn-primary.edit
+                     i.glyphicon.glyphicon-edit
+                   a.btn.btn-danger.remove(href=`/task/${toDo._id}`)
+                     i.glyphicon.glyphicon-remove
