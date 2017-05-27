@@ -32,15 +32,15 @@ Check using this commands:
 
 ## 2º Prepare the app
 
-In this step, you will prepare a simple application that can be deployed. IN this case we are gping to test our ToDo app.
+In this step, you will prepare a simple application that can be deployed. In this case we are going to test our ToDo app.
 
 You can clone it in this way:
 
-`$ git clone https://github.com/heroku/node-js-getting-started.git`
+`$ git clone https://github.com/joseangelbarrera/todo-list.git`
 
 And then go to the folder:
 
-`$ cd node-js-getting-started`
+`$ cd todo-list`
 
 You now have a functioning git repository that contains our simple toDo application as well as a package.json file, which is used by Node’s dependency manager.
 
@@ -52,12 +52,21 @@ Create an app on Heroku, which prepares Heroku to receive your source code.
 `$ heroku create`
 
 Creating sharp-rain-871toDo-list-test-nodeJS... done, stack is cedar-14
+
 http://toDo-list-test-nodeJS.herokuapp.com/ | https://git.heroku.com/sharp-rain-871.git
 Git remote heroku added
 
+the response will be somethig similar to:
+
+```
+Creating app... done, ⬢ powerful-refuge-99970
+https://powerful-refuge-99970.herokuapp.com/ | https://git.heroku.com/powerful-refuge-99970.git
+```
+
+
 When you create an app, a git remote (called heroku) is also created and associated with your local git repository.
 
-Heroku generates a random name (in this case toDo-list-test-nodeJS.herokuapp.com) for your app, or **you can pass a parameter** to specify your own app name.
+Heroku generates a random name (in this case powerful-refuge-99970) for your app, or **you can pass a parameter** to specify your own app name. But a name must start with a letter and can only contain lowercase letters, numbers, and dashes
 
 Now deploy your code:
 `$ git push heroku master`
@@ -185,17 +194,41 @@ Once you finish the setup mLab provide two ways ***to connect***:
 
 ***Using the mongo shell:***
 
-`$ mongo ds151631.mlab.com:51631/todo_list -u <dbuser> -p <dbpassword>`
+`@ mongo ds151631.mlab.com:51631/todo_list -u <dbuser> -p <dbpassword>`
 `
 ***Uusing a driver via the standard MongoDB URI (what's this?):
 ***
 `mongodb://<dbuser>:<dbpassword>@ds151631.mlab.com:51631/todo_list`
 
-> db user: is the user yiu create
+> db user: is the user you have created
 > db password: is the pass you create for your user.
 
 
 mongo ds151631.mlab.com:51631/todo_list -u admin -p bmp509
+
+Adding data
+
+```
+    var toDo_Schema = new Schema({
+    task: String,
+    dateOfCreation: {
+        type: Number,
+        default: +new Date
+    },
+    dateOfUpdate: Number,
+    completed: {
+        type: Boolean, 
+        default: false
+     }
+})
+```
+
+
+curl -X POST --data "task=Get involved in the revolution" localhost:4000/tasks
+  
+
+curl -X POST --data "task=Ask Questions&Completed=True" localhost:4000/tasks
+
 
 
 % mongo ds012345.mlab.com:56789/dbname -u dbuser -p dbpassword

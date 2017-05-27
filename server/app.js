@@ -6,8 +6,11 @@ const path = require('path')
 const routerTasks = require('./routes/tasks')
 const routerTask = require('./routes/task')
 
-const urlDB = 'mongodb://localhost:27017/test'
-const PORT = 4000
+
+app.set('port', (process.env.PORT || 5000));
+
+// const urlDB = 'mongodb://localhost:27017/test'
+// const PORT = 4000
 
 // const apiKey = require('./routes/middlewere/keyword.js')
 
@@ -26,5 +29,9 @@ app.use(bodyParser.json())
 app.use('/tasks', routerTasks)
 app.use('/task', routerTask)
 
-app.listen(PORT)
-console.log(`Listening on PORT ${PORT}`)
+// app.listen(PORT)
+// console.log(`Listening on PORT ${PORT}`)
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
